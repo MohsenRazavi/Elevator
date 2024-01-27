@@ -47,7 +47,7 @@ def fcfs(inp_queue, requested_floors, current_floor, ele_speed):
             current_floor = go_to_floor(current_floor, dest_floor, ele_speed)
         except IndexError:
             continue
-
+            
 
 def go_to_floor(src_floor, dst_floor, elevator_speed):
     if dst_floor > src_floor:
