@@ -1,7 +1,5 @@
 import threading
 
-from general_functions import get_integer_user_input, get_user_choice
-
 ALGORITHMS = [
     'FCFS',
     'SJF',
@@ -19,10 +17,9 @@ ALGORITHMS = [
 
 num_of_floors = 20
 floor_height = 3
-algo_index = 3
+algo_index = 2
 algo = ALGORITHMS[algo_index]
 elevator_speed = 1
-
 
 floor_list = []
 current_floor = 0
@@ -56,8 +53,21 @@ elif algo == 'SJF':
     inp_getter.join()
     req_getter.join()
     sjf_trd.join()
-elif algo == 'Round-Robin':
-    pass
+elif algo == 'ROUND-ROBIN':
+    from round_robin import get_request, rr, input_getter
+
+    q = 1
+    inp_getter = threading.Thread(target=input_getter, args=(inp_list,))
+    req_getter = threading.Thread(target=get_request, args=(inp_list, floor_list))
+    rr_trd = threading.Thread(target=rr, args=(floor_list, current_floor, elevator_speed, q))
+
+    inp_getter.start()
+    req_getter.start()
+    rr_trd.start()
+
+    inp_getter.join()
+    req_getter.join()
+    rr_trd.join()
 elif algo == 'STRF':
     from srtf import get_request, srtf, input_getter
 

@@ -105,7 +105,7 @@ def srtf(requested_floors, current_floor, ele_speed):
                         arrived_at_src_floor = False
                         break
                 else:
-                    print(f'We arrived at destination {dst_floor} !')
+                    print(f'We arrived at destination floor {dst_floor} !')
                     del requested_floors[index]
                     next_request = None
                     index = None
