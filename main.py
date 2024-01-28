@@ -1,4 +1,5 @@
 import threading
+from general_functions import get_integer_user_input, get_user_choice
 
 ALGORITHMS = [
     'FCFS',
@@ -6,20 +7,13 @@ ALGORITHMS = [
     'ROUND-ROBIN',
     'STRF'
 ]
-#
-# num_of_floors = get_integer_user_input('Enter number of floors: ', default=4)
-# floor_height = get_integer_user_input('Enter floor height(m): ', default=3)
-# print('Elevator algorithm: ')
-# algo_index = get_user_choice(ALGORITHMS) - 1
-# algo = ALGORITHMS[algo_index]
-# elevator_speed = get_integer_user_input('Enter elevator speed(m/s): ', default=1)
 
-
-num_of_floors = 20
-floor_height = 3
-algo_index = 2
+num_of_floors = get_integer_user_input('Enter number of floors: ', default=4)
+floor_height = get_integer_user_input('Enter floor height(m): ', default=3)
+print('Elevator algorithm: ')
+algo_index = get_user_choice(ALGORITHMS) - 1
 algo = ALGORITHMS[algo_index]
-elevator_speed = 1
+elevator_speed = get_integer_user_input('Enter elevator speed(m/s): ', default=1)
 
 floor_list = []
 current_floor = 0
