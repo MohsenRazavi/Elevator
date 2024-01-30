@@ -29,7 +29,7 @@ def get_request(inp_queue, requested_floors):
             continue
 
 
-def srtf(requested_floors, current_floor, ele_speed):
+def srtf(requested_floors, current_floor, ele_speed, floor_height):
     next_request = None
     index = None
     arrived_at_src_floor = False
@@ -52,7 +52,7 @@ def srtf(requested_floors, current_floor, ele_speed):
             print(f'Going to floor {dst_floor}')
             for _ in range(time_to_destination):
                 timeit.default_timer()
-                time.sleep(1)
+                time.sleep(floor_height)
                 timeit.default_timer()
                 print(f'Floor {current_floor}')
                 if direction == 'TOP':
@@ -85,7 +85,7 @@ def srtf(requested_floors, current_floor, ele_speed):
                 time_to_destination = distance // ele_speed
                 for _ in range(time_to_destination):
                     timeit.default_timer()
-                    time.sleep(1)
+                    time.sleep(floor_height)
                     timeit.default_timer()
                     print(f'Floor {current_floor}')
                     if direction == 'TOP':

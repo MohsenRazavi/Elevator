@@ -29,7 +29,7 @@ def get_request(inp_queue, requested_floors):
             continue
 
 
-def rr(requested_floors, current_floor, ele_speed, q):
+def rr(requested_floors, current_floor, ele_speed, q, floor_height):
     index = 0
     next_request = None
     while True:
@@ -48,7 +48,7 @@ def rr(requested_floors, current_floor, ele_speed, q):
             print(f'Going to floor {dst_floor}')
             for _ in range(time_to_destination):
                 timeit.default_timer()
-                time.sleep(1)
+                time.sleep(floor_height)
                 timeit.default_timer()
                 print(f'Floor {current_floor}')
                 if direction == 'TOP':
@@ -66,7 +66,7 @@ def rr(requested_floors, current_floor, ele_speed, q):
             time_to_destination = distance // ele_speed
             for _ in range(time_to_destination):
                 timeit.default_timer()
-                time.sleep(1)
+                time.sleep(floor_height)
                 timeit.default_timer()
                 print(f'Floor {current_floor}')
                 if direction == 'TOP':

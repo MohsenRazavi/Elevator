@@ -24,7 +24,7 @@ if algo == 'FCFS':
 
     inp_getter = threading.Thread(target=input_getter, args=(inp_list,))
     req_getter = threading.Thread(target=get_request, args=(inp_list, floor_list))
-    fcfs_trd = threading.Thread(target=fcfs, args=(inp_list, floor_list, current_floor, elevator_speed))
+    fcfs_trd = threading.Thread(target=fcfs, args=(inp_list, floor_list, current_floor, elevator_speed, floor_height))
 
     inp_getter.start()
     req_getter.start()
@@ -38,7 +38,7 @@ elif algo == 'SJF':
 
     inp_getter = threading.Thread(target=input_getter, args=(inp_list,))
     req_getter = threading.Thread(target=get_request, args=(inp_list, floor_list))
-    sjf_trd = threading.Thread(target=sjf, args=(floor_list, current_floor, elevator_speed))
+    sjf_trd = threading.Thread(target=sjf, args=(floor_list, current_floor, elevator_speed, floor_height))
 
     inp_getter.start()
     req_getter.start()
@@ -53,7 +53,7 @@ elif algo == 'ROUND-ROBIN':
     q = 1
     inp_getter = threading.Thread(target=input_getter, args=(inp_list,))
     req_getter = threading.Thread(target=get_request, args=(inp_list, floor_list))
-    rr_trd = threading.Thread(target=rr, args=(floor_list, current_floor, elevator_speed, q))
+    rr_trd = threading.Thread(target=rr, args=(floor_list, current_floor, elevator_speed, q, floor_height))
 
     inp_getter.start()
     req_getter.start()
@@ -67,7 +67,7 @@ elif algo == 'STRF':
 
     inp_getter = threading.Thread(target=input_getter, args=(inp_list,))
     req_getter = threading.Thread(target=get_request, args=(inp_list, floor_list))
-    srtf_trd = threading.Thread(target=srtf, args=(floor_list, current_floor, elevator_speed))
+    srtf_trd = threading.Thread(target=srtf, args=(floor_list, current_floor, elevator_speed, floor_height))
 
     inp_getter.start()
     req_getter.start()
