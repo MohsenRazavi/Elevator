@@ -50,21 +50,22 @@ def fcfs(inp_queue, requested_floors, current_floor, ele_speed, floor_height):
             
 
 def go_to_floor(src_floor, dst_floor, elevator_speed, floor_height):
+    direction = None
     if dst_floor > src_floor:
         direction = 'TOP'
     elif dst_floor < src_floor:
         direction = 'DOWN'
     distance = abs(src_floor - dst_floor)
-    time_to_destination = distance // elevator_speed
+    time_to_destination = distance
     print(f'Going to floor {dst_floor}')
     for _ in range(time_to_destination+1):
         timeit.default_timer()
-        time.sleep(floor_height)
+        time.sleep(floor_height//elevator_speed)
         timeit.default_timer()
         print(f'Floor {src_floor}')
         if direction == 'TOP':
             src_floor += 1
-        else:
+        elif direction == 'DOWN':
             src_floor -= 1
     print(f'We arrived at floor {dst_floor} !')
     return dst_floor
